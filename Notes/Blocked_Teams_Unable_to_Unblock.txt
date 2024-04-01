@@ -1,0 +1,19 @@
+Microsoft Teams - Blocked account on mobile device and can't unblock
+
+https://m365community.blogspot.com/2022/12/how-to-unblock-blocked-contact-from.html
+
+Open Teams in Edge. Open dev tools (CTRL + SHIFT + i) and then open settings. Select 'Network' > Filter for 'settings' and look for blocklist > Right Click > 'Edit and Resend'
+Change the API to
+
+GET   https://teams.microsoft.com/api/mt/part/msft/beta/userSettings/blocklist
+
+Send. Review reply and note PSTN number (Note: Will be in {})
+Change the API to
+
+POST  https://teams.microsoft.com/api/mt/part/msft/beta/userSettings/blocklist/manage
+
+Change from Query to Body and modify to:
+
+{"remove":["8:orgid:Enter the User GUID you found on the GET result"]}
+
+Click Send. Wait 30 seconds to a minute. Refresh the webpage. Done
