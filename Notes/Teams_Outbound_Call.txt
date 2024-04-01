@@ -1,0 +1,6 @@
+Microsoft Teams:
+
+To make external calls ensure they have the licensing and that the following attribute is set to true:
+EnterpriseVoiceEnabled
+
+You can review this via Get-CsOnlineUser -Identity
