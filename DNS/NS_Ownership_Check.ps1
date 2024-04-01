@@ -1,4 +1,5 @@
 # Script used to see if the DNS record is hosted by the MSP. This is helpful when given a list of domains to check and verify if the NS record resolves to your own servers.
+# The purpose for this one is to check without needing access to the NS Servers themselves.
 
 function Test-DNSRecord {
     param(
@@ -15,7 +16,7 @@ function Test-DNSRecord {
             $dnsRecord = $result2 -replace '\s+', ' ' -join ' '
             return $dnsRecord
         } else {
-            return "$Domain is not hosted by onPlatinum"
+            return "$Domain is not hosted by Company"
         }
     } catch {
         return "Error: $_"
