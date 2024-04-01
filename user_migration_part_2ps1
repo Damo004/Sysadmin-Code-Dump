@@ -1,0 +1,11 @@
+# Script used to make the tedious tasks of transferring a user from 1 server to another, less annoying as it already is
+# This is when they may have information spread across 2 different servers. This is the second part of a 2 part script to do the transfer.
+
+# Issue with Desktop and My Documents is it is handled by folder redirect. Copying from standard user account doubles up and causes problems.
+
+# Target the folder redirect. This can only be done as the user.
+$newServer1 = "\\example.net.au\fs01\newServer1\customer01\Redirected_Folders\$env:username"
+
+# Copy Items over
+Copy-Item -Path "$newServer1\Desktop" -Destination "C:\Users\$env:username\" -Recurse -Force -Verbose
+Copy-Item -Path "$newServer1\My Documents\*" -Destination "C:\Users\$env:username\Documents" -Recurse -Force -Verbose
